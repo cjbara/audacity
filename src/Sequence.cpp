@@ -1087,6 +1087,15 @@ int Sequence::FindBlock(sampleCount pos, sampleCount lo,
       return FindBlock(pos, lo, (lo + guess) / 2, guess);
    else
       return FindBlock(pos, guess + 1, (guess + 1 + hi) / 2, hi);
+      
+   //Work on dictionary search implementation
+   /*if (pos < mBlock->Item(guess)->start) {
+   	sampleCount hashGuess = (mBlock->Item(guess)->start - pos) / mBlock->Item(guess)->f->GetLength();
+   	return FindBlock(pos, lo , guess - 1 - hashGuess , guess);
+   } else {
+   	sampleCount hashGuess = (pos - (mBlock->Item(guess)->start + mBlock->Item(guess)->f->GetLength())) / mBlock->Item(guess)->f->GetLength();
+   	return FindBlock(pos , guess + 1 , guess + 1 + hashGuess , hi);
+   }*/
 }
 
 int Sequence::FindBlock(sampleCount pos) const
